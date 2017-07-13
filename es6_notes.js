@@ -50,6 +50,7 @@
   let message = `${student.name} please see ${teacher.name} in ${teacher.room} to pick up your report card.`;
 
 
+
 // Destructuring
   // Extracting data from arrays and objects into distinct variables.
 
@@ -75,11 +76,75 @@
 
     console.log(type, color, karat);
 
-  //
+  // this is  using destructuring
+    // array
+    const point = [10,25,-34];
+    const [x,y,z] = point;
+    console.log(x,y,z);
 
-  const point = [10,25,-34];
-  const [x,y,z] = point;
-  console.log(x,y,z);
+    //
+    let names = ['Paul', 'John'];
+    let [first,second] = names;
+
+    // object
+    const gemstone = {
+        type: 'quartz',
+        color: 'rose',
+        karat: 21.29
+    }
+
+    const {type, color, karat} = gemstone;
+
+
+// Object Literal Shorthand
+
+let type = 'quarts';
+let color = 'rose';
+let carat = 21.29;
+
+const gemstone = {
+    type,
+    color,
+    carat
+}
+
+console.log(gemstone);
+
+
+// Shorthand method names
+
+// old
+let myObject = {
+    calculate: function() {...}
+}
+// new
+let myObject = {
+    calculate() {...}
+}
+
+
+
+// Iteration
+
+    // Iterable protocol
+
+
+
+    // For...of loop
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
