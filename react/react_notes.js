@@ -1,4 +1,5 @@
-// REACT NOTES
+// REACT FUNDAMENTALS
+// https://tylermcginnis.com/courses/react-fundamentals/
 
 /////////////////////
 // React Ecosystem //
@@ -90,6 +91,7 @@
 
 
     // Is React Declarative? (for the most part)
+    // https://learn.tylermcginnis.com/courses/50507/lectures/2466381
 
     $('#paul-btn').click(function() {
       $(this).toggleClass('highlight');
@@ -218,4 +220,63 @@
     return axios.get('https://api.github.com/users/' + username + '/repos' + param + '$per_page=100');
   }
 
+
+
+
+
+// IMPERATIVE VS DECLARATIVE Functions
+
+  // Examples of imperative functions
+    // We're explicitly iterating over an array (laying out steps)
+      function double(arr) {
+        let results = []
+        for (let i = 0; i < arr.length; i++) {
+          results.push(arr[i]*2)
+        }
+        return results
+      }
+
+      double([1,3]);
+
+    //
+      function add(arr) {
+        let result = 0
+        for (let i = 0; i < arr.length; i++) {
+          result = result + arr[i];
+        }
+        return result
+      }
+
+      add([1,3,5]);
+
+    // Subjective case, code is not understood at a glance, we still need to read each step to figure it out
+      $('#btn').click(function(){
+        $(this).toggleClass('highlight');
+        $(this).text() === 'Add Highlight' ? $(this).text('Remove Highlight') : $(this).text('Add Highlight');
+      });
+
+  // Examples of declarative functions
+
+    funciton double(arr) {
+      return arr.map((item) => item * 2)
+    }
+
+
+    function add(add) {
+      return arr.reduce((prev, current) => prev + current, 0)
+    }
+
+
+    <Btn
+      onToggleHighlight={this.handleToggleHighlight}
+      highlight={this.state.highlight}>
+        {this.state.buttonText}
+    </Btn>
+
+
+    // Declarative code is context-independent, it can be used in different programs
+    // rather than concerning about the steps needed to accomplish the program's goal.
+
+    // The declarative functions and components can be used in any program we want.
+    // On the other hand, imperative code relies on the context of the current state.
 
