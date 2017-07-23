@@ -1,5 +1,6 @@
 // const and let
   function getClothing(isCold) {
+    // are hoisted, var freezing, var hot;
     if (isCold) {
       var freezing = 'Grab a jacket!';
     } else {
@@ -8,7 +9,23 @@
     }
   }
 
-  getClothing(false); // undefined
+  getClothing(false); // undefined,
+// var freezing, hot are hoisted on top, are declared but their values are limited to the scope in which they are defined.
+
+
+// Hoisting
+  function getClothing(isCold) {
+    if (isCold) {
+      let freezing = 'Grab a jacket!'; // only exists in this block
+    } else {
+      let hot = 'It’s a shorts kind of day.'; // only exists in this block
+      console.log(freezing);
+    }
+  }
+
+  getClothing(false); // ReferenceError not defined
+  // let freezing and let hot are only visible in the scope in which they are defined.
+
 
   ////
   function getClothing(isCold) {
@@ -19,7 +36,7 @@
       console.log(freezing);
     }
   }
-.
+
   getClothing(false); // Reference error: freezing is not defined.
 
   ////
