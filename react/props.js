@@ -15,12 +15,6 @@
   });
   console.log(numbersPlusTen);
 
-  // filter review
-  var friends = ['Ean', 'Tyler', 'Mikenzi', 'Eric', 'Jessica'];
-  var newFriends = friends.filter(function (friend) {
-    return friend[0] === 'E'
-  });
-  console.log(newFriends) // ['Ean', 'Eric']
 
 
 
@@ -51,3 +45,109 @@ class ShowList extends React.Component {
     )
   }
 }
+
+
+
+
+
+
+  // filter review
+  var friends = ['Ean', 'Tyler', 'Mikenzi', 'Eric', 'Jessica'];
+  var newFriends = friends.filter(function (friend) {
+    return friend[0] === 'E'
+  });
+  console.log(newFriends) // ['Ean', 'Eric']
+
+
+
+
+// Maps and filter practice
+// https://codepen.io/tylermcginnis/pen/peGGzX?editors=0010
+// https://codepen.io/tylermcginnis/pen/mWoVJE?editors=0010
+
+
+class Users extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Friends</h1>
+        <ul>
+          {this.props.list.filter(function(user) {
+            return user.friend === true
+          }).map(function(user) {
+             return <li> {user.name} </li>
+          })}
+        </ul>
+
+        <hr />
+
+        <h1> Non Friends </h1>
+        <ul>
+          {this.props.list.filter(function(user) {
+            return user.friend !== true
+          }).map(function(user) {
+             return <li> {user.name} </li>
+          })}
+        </ul>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(
+  <Users list={[
+    { name: 'Tyler', friend: true },
+    { name: 'Ryan', friend: true },
+    { name: 'Michael', friend: false },
+    { name: 'Mikenzi', friend: false },
+    { name: 'Jessica', friend: true },
+    { name: 'Dan', friend: false } ]}
+  />,
+  document.getElementById('app')
+);
+
+
+// Refactor the above
+
+class Users extends React.Component {
+  render() {
+    var friends = this.props.list.filter(function(user) {
+      return user.friend === true
+    });
+    var nonFriends = this.props.list.filter(function(user) {
+      return user.friend !== true
+    });
+
+    return (
+      <div>
+        <h1>Friends</h1>
+        <ul>
+          {friends.map(function(user) {
+             return <li> {user.name} </li>
+          })}
+        </ul>
+
+        <hr />
+
+        <h1> Non Friednds </h1>
+        <ul>
+          {nonFriends.map(function(user) {
+             return <li> {user.name} </li>
+          })}
+        </ul>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(
+  <Users list={[
+    { name: 'Tyler', friend: true },
+    { name: 'Ryan', friend: true },
+    { name: 'Michael', friend: false },
+    { name: 'Mikenzi', friend: false },
+    { name: 'Jessica', friend: true },
+    { name: 'Dan', friend: false } ]}
+  />,
+  document.getElementById('app')
+);
