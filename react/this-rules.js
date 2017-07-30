@@ -140,8 +140,7 @@
   };
   var zebra = new Animal('black and white', 'Zorro', 'Zebra');
 
-
-  // window Binding
+ // window Binding
   var sayAge = function() {
       console.log(this.age);
   };
