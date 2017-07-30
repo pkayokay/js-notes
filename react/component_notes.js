@@ -100,7 +100,7 @@ class HelloWorld extends React.Component {
 // 3. Don't modify the variables outside of their scope.
 
 
-// When calling a 'pure' funciton, it is easy to predict what's going to happen
+// When calling a 'pure' functton, it is easy to predict what's going to happen
 // here are some examples
   function add(x,y) {
     return x + y
@@ -118,7 +118,10 @@ class HelloWorld extends React.Component {
 
 
 
-// Introduction to PropTypes
+//////////////////////////////
+// Introduction to PropTypes//
+//////////////////////////////
+
 class Users extends React.Component {
   render() {
     return(
@@ -131,12 +134,13 @@ class Users extends React.Component {
   }
 }
 <Users list="Tyler, Jake, Mikenzi" />
-// This would breka because this is a string. Strings don't have a .map method.
+// This would break because this is a string. Strings don't have a .map method.
 // PropTypes allow you to declare the "type" (string, number, function, etc) of each prop being passed to a component. Then, if a prop passed in isn't of the declared type, you'll get a warning in the console.
 // https://facebook.github.io/react/docs/components-and-props.html
 
   var React = require('react');
   var PropTypes = require('prop-types')
+
   class Users extends React.Component {
     render() {
       return (
@@ -154,6 +158,15 @@ class Users extends React.Component {
   <Users list="Tyler, Jake, Mikenzi" />
 
 // The 'prop-types' package needs to be downloaded with npm.
+// Validating Components with PropTypes
+
+// with the code below, the console will log a warning if the prop is not the correct type.
+// in this case, because list is a string, we get an error.
+
+  Users.propTypes = {
+    list: PropTypes.array.isRequired
+  }
+
 
 
 
