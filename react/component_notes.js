@@ -167,6 +167,16 @@ class Users extends React.Component {
     list: PropTypes.array.isRequired
   }
 
+// have this line of code makes it easy to know how to use your components.
 
+
+// You can also nest propTypes.
+
+  Users.propTypes = {
+    list: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      friend: PropTypes.bool.isRequired
+    }))
+  }
 
 
