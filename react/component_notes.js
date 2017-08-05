@@ -180,3 +180,42 @@ class Users extends React.Component {
   }
 
 
+
+
+// Private Components in React
+
+var React = require('react');
+function FriendsList (props) {
+  return (
+    <h1>Friends:</h1>
+    <ul>
+      {props.friends.map((friend, index) => {
+        return (
+          <li key={friend}>{friend}</li>
+        )
+      })}
+    </ul>
+  )
+}
+module.exports = FriendsList
+
+// But how can we make this modular?
+// We can create another stateless functional component that's in charge of handling each friend.
+
+var React = require('react');
+function FriendItem (props) {
+  return <li>{props.friend}</li>
+}
+function FriendsList (props) {
+  return (
+    <h1>Friends:</h1>
+    <ul>
+      {props.friends.map((friend, index) => <FriendItem friend={friend} key={friend} />)}
+    </ul>
+  )
+}
+module.exports = FriendsList
+
+
+
+
