@@ -1,268 +1,149 @@
-// const and let
-  function getClothing(isCold) {
-    // are hoisted, var freezing, var hot;
-    if (isCold) {
-      var freezing = 'Grab a jacket!';
-    } else {
-      var hot = 'It’s a shorts kind of day.';
-      console.log(freezing);
-    }
-  }
+// let and const - closure is in the scope of the block, not the function. var hoisted in the scope of the funciton
 
-  getClothing(false); // undefined,
-// var freezing, hot are hoisted on top, are declared but their values are limited to the scope in which they are defined.
+// Template literals
 
+// Desctructuring
 
-// Hoisting
-  function getClothing(isCold) {
-    if (isCold) {
-      let freezing = 'Grab a jacket!'; // only exists in this block
-    } else {
-      let hot = 'It’s a shorts kind of day.'; // only exists in this block
-      console.log(freezing);
-    }
-  }
-
-  getClothing(false); // ReferenceError not defined
-  // let freezing and let hot are only visible in the scope in which they are defined.
-
-
-  ////
-  function getClothing(isCold) {
-    if (isCold) {
-      const freezing = 'Grab a jacket!';
-    } else {
-      const hot = 'It’s a shorts kind of day.';
-      console.log(freezing);
-    }
-  }
-
-  getClothing(false); // Reference error: freezing is not defined.
-
-  ////
-  let instructor = 'James';
-  instructor = 'Richard';
-  console.log(instructor); // Richard
-
-
-
-
-// Concatenation
-  // Old Way
-
-  const student = {
-    name: 'Richard Kalehoff',
-    guardian: 'Mr. Kalehoff'
-  };
-
-  const teacher = {
-    name: 'Mrs. Wilson',
-    room: 'N231'
-  }
-
-  let message = student.name + ' please see ' + teacher.name + ' in ' + teacher.room + ' to pick up your report card.';
-
-  // New Way (with template literals)
-
-  let message = `${student.name} please see ${teacher.name} in ${teacher.room} to pick up your report card.`;
-
-
-
-// Destructuring
-  // Extracting data from arrays and objects into distinct variables.
-
-  //this is the usual...
   // array
-    const point = [10, 25, -34];
-    const x = point[0];
-    const y = point[1];
-    const z = point[2];
+  const point = [1,2,3]
+  const [x,y,z] = point // const x = point[0]
 
-    console.log(x,y,z);
+  const things = ['red', 'basketball', 'paperclip', 'green', 'computer', 'earth', 'udacity', 'blue', 'dogs'];
 
-    // object
-    const gemstone = {
-      type: 'quartz',
-      color: 'rose',
-      karat: 21.29
-    }
-
-    const type = gemstone.type;
-    const color = gemstone.color;
-    const karat = gemstone.karat;
-
-    console.log(type, color, karat);
-
-  // this is  using destructuring
-    // array
-    const point = [10,25,-34];
-    const [x,y,z] = point;
-    console.log(x,y,z);
-
-    //
-    let names = ['Paul', 'John'];
-    let [first,second] = names;
-
-    // object
-    const gemstone = {
-        type: 'quartz',
-        color: 'rose',
-        karat: 21.29
-    }
-
-    const {type, color, karat} = gemstone;
+  const [one, a, b, two, c, d, e, three, f] = things;
+  const colors = `List of Colors
+  1. ${one}
+  2. ${two}
+  3. ${three}`
 
 
-// Object Literal Shorthand
+  // object
+  const gemstone = {
+    type: 'quartz',
+    color: 'rose',
+    karat: 21
+  }
 
-let type = 'quarts';
-let color = 'rose';
-let carat = 21.29;
+  const {type, color, karat} = gemstone // const type = gemstone.type
 
-const gemstone = {
+
+// Object literal shorthand
+
+  // Old way
+
+  let type = 'quartz'
+  let color = 'rose'
+  let carat = 21
+
+  const gemstone = {
+    type: type,
+    color: color,
+    carat: carat
+  }
+
+  // New way
+
+  const gemstone = { type, color, carat }
+
+
+  // Shorthand method names
+
+  let gemstone = {
     type,
     color,
-    carat
-}
-
-console.log(gemstone);
-
-
-// Shorthand method names
-
-// old
-let myObject = {
-    calculate: function() {...}
-}
-// new
-let myObject = {
-    calculate() {...}
-}
-
+    carat,
+    calculateWorth() {
+      ...
+    }
+  }
 
 
 // Iteration
-  // for loop
-  const digits = [0,1,2,3];
 
-  for (let i = 0; i < digits.length; i++) {
-    console.log(digits[i]);
-  }
+  const digits = [0,1,2,3]
 
-  // for in loop
-
-  const digits = [0,1,2,3];
-
+  // uses index
   for (const index in digits) {
-    console.log(digits[index]);
+    console.log(digits[index])
   }
 
-  // for of loop
-  const digits = [0,1,2,3];
-
+  // no index
   for (const digit of digits) {
     console.log(digit)
   }
 
-  //
-  const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-  for (const digit of digits) {
-    if (digit % 2 === 0) {
-      continue;
-    }
-    console.log(digit);
-  }
 
   //
   const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 
   for (const day of days) {
-    function capitalize(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-    console.log(capitalize(day));
+      function capitalize(string) {
+          return string.charAt(0).toUpperCase() + string.slice(1);
+      }
+      console.log(capitalize(day));
   }
 
+
 // Spread operator
-  // gives the ability to spread iterable objects into multiple elements.
-  const books = ['Don Quixote', 'The hobbit', 'Alice in Wonderland', 'Tale of Two Cities'];
 
-  console.log(...books);
-
-  // with sets
-  const primes = new Set([2, 3, 5, 7, 11, 13, 17, 19, 23, 29]);
-  console.log(...primes);
-
-  // combine arrays with concat
-  const fruits = ['apples', 'bananas', 'pears'];
-  const vegetables = ['corn','potatoes','carrots'];
-  const produce = fruits.concat(vegetables);
-  console.log(produce);
+  const books = ['book 1', 'book 2', 'book 3']
+  console.log(...books)
 
 
-  /*
-   * Instructions: Use the spread operator to combine the `fruits` and `vegetables` arrays into the `produce` array.
-   */
-   // doing const product = [fruits,vegetables] won't work
+  //
 
   const fruits = ["apples", "bananas", "pears"];
   const vegetables = ["corn", "potatoes", "carrots"];
 
+  const produce = [fruits, vegetables] // this does not work
   const produce = [...fruits,...vegetables];
 
   console.log(produce);
 
 
-// Rest parameter
-  // represent indefinite number of elements as an array
-  // opposite of the spread operator
+// Rest parameter: the three ... allow you to represent an indefinite number of elements as an array.
 
-  const order = [20.17, 18.67, 1.50, 'cheese','eggs','milk','bread'];
+  const order = [20.17, 18.67, 1.50, "cheese", "eggs", "milk", "bread"];
   const [total, subtotal, tax, ...items] = order;
-  console.log(total, subtotal, tax, items);
+  console.log(total, subtotal, tax, items); //  20.17 18.67 1.5 ["cheese", "eggs", "milk", "bread"]
 
-// Variadic functions
-  // take indefinite number of arguments
+// Variadic functions: functions that take an indefinite number of arguments
 
   function sum() {
     let total = 0;
-    for (const argument of arguments) {
-      total += argument;
+    for(const argument of arguments) {
+      total += argument
     }
     return total;
   }
-  console.log(sum(9,9,9,9)) // 36
 
-  // better way to write this, it avoids confusion about arguments
-  function sum(...nums) {
+  sum(1,1) // 2
+  sum(1,1,1) //3
+
+  // rewritten for clarity
+  function sum(...sums) {
     let total = 0;
     for(const num of nums) {
       total += num;
     }
     return total;
   }
-  console.log(sum(9,9,9,9))
 
-
-  // Test Program
-
-    function average(...nums) {
-      let total = 0;
-      for (const num of nums) {
+  //
+  function average(...nums) {
+    let total = 0;
+    for (const num of nums) {
         total = (total + num)
-      }
-      if (nums.length > 0) {
-        return total/nums.length;
-      } else {
-        return 0;
-      }
     }
 
-    console.log(average(2, 6));
-    console.log(average(2, 3, 3, 5, 7, 10));
-    console.log(average(7, 1432, 12, 13, 100));
-    console.log(average());
+    if (nums.length > 0) {
+        return total/nums.length;
+    } else {
+        return 0;
+    }
+  }
 
-
-
+  console.log(average(2, 6));
+  console.log(average(2, 3, 3, 5, 7, 10));
+  console.log(average(7, 1432, 12, 13, 100));
+  console.log(average());
